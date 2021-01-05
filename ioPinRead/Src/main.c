@@ -26,12 +26,13 @@
 int main(void) {
 
 	//get register addresses in the peripherals (Base + Offset)
-	uint32_t *const pRccGPIOAD = (uint32_t*) 0x40023830;
-	uint32_t *const pGPIODOut = (uint32_t*) 0x40020C14;
-	uint32_t *const pGPIODMode = (uint32_t*) 0x40020C00;
+	uint32_t volatile *const pRccGPIOAD = (uint32_t*) 0x40023830;
 
-	uint32_t *const pGPIOAIn = (uint32_t*) 0x40020010;
-	uint32_t *const pGPIOAMode = (uint32_t*) 0x40020000;
+	uint32_t volatile *const pGPIODMode = (uint32_t*) 0x40020C00;
+	uint32_t volatile *const pGPIODOut = (uint32_t*) 0x40020C14;
+
+	uint32_t volatile *const pGPIOAMode = (uint32_t*) 0x40020000;
+	uint32_t const volatile *const pGPIOAIn = (uint32_t*) 0x40020010;
 
 	//Turn on RCC clock for GPIOD and GPIOA
 	//shift the bits in the Register Corresponding to
