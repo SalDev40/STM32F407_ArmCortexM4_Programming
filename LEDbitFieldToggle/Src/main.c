@@ -26,14 +26,12 @@
 #include "main.h"
 
 int main(void) {
-
 	RCC_AHB1ENR_t volatile *const ppRcc = (RCC_AHB1ENR_t*) 0x40023830;
 	GPIOx_MODE_t volatile *const ppGpioOutModeReg = (GPIOx_MODE_t*) 0x40020C00;
 	GPIOx_ODR_t volatile *const ppGpioOutDataReg = (GPIOx_ODR_t*) 0x40020C14;
 
 	//1. turn on the GPIOD peripheral clock
 	ppRcc->gpiod_en = 1;
-
 
 	//2. configure the mode of the IO pin as output
 	ppGpioOutModeReg->pin_12 = 1;

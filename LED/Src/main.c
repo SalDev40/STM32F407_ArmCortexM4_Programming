@@ -82,10 +82,27 @@ int main(void) {
 	*ppGpioOutModeReg |= (1 << 24);
 
 	//3. Configure the 12th bit (corresponding to 12th pin) of GPIOD output data to 1 (HIGH);
-	*ppGpioOutDataReg |= (1 << 12);
+//	*ppGpioOutDataReg |= (1 << 12);
 
 	/* Loop forever */
-//	while (1);
+	uint64_t i = 0;
+	while (i <= 3000000000) {
+		//3. Configure the 12th bit (corresponding to 12th pin) of GPIOD output data to 1 (HIGH);
+		*ppGpioOutDataReg |= (1 << 12);
+		//introduce small human observable delay
+		//This loop executes for 10K times
+		for (uint32_t i = 0; i < 300000; i++)
+			;
+
+		//Tun OFF the LED
+		*ppGpioOutDataReg &= ~(1 << 12);
+
+		for (uint32_t i = 0; i < 300000; i++)
+			;
+
+		i++;
+
+	};
 
 }
 
