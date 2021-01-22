@@ -37,7 +37,6 @@ int main(void)
 
 	printf("In thread mode : after interrupt\n");
 
-	for(;;);
 }
 
 /* This function(ISR) executes in HANDLER MODE of the processor */
